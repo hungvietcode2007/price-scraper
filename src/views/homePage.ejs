@@ -1,0 +1,39 @@
+<div class="mt-20 mx-3">
+  <form action="/" method="post">
+    <h1 class="font-bold text-white text-5xl my-6 text-center">
+      Đừng mua hớ. Hãy để
+      <span class="text-[#D4AF37]">Cú</span>
+      giúp bạn
+    </h1>
+    <p class="text-gray-400 text-center">
+      Dán link sản phẩm bạn muốn mua từ Tiki,... vào đây.
+    </p>
+    <p class="text-gray-400 text-center">
+      Mắt cú sẽ tự động theo dõi biến động giá và gửi thông báo cho bạn khi đạt
+      được mức giá bạn muốn
+    </p>
+    <div
+      class="w-[92%] sm:w-[80%] max-w-2xl mt-5 mb-1 mx-auto bg-[#1c222d] border <%=error?"border-red-400":"border-[#d4af37]/60"%> rounded-2xl p-2 focus-within:border-[#d4af37] focus-within:ring-1 focus-within:ring-[#d4af37] transition shadow-lg flex flex-col sm:flex-row gap-2"
+    >
+      <input
+        type="url"
+        name="url"
+        placeholder="Dán link sản phẩm Tiki tại đây..."
+        class="w-full sm:flex-1 bg-transparent px-3 py-2.5 text-sm sm:text-base text-gray-200 placeholder-gray-500 border-none outline-none focus:outline-none focus:ring-0"
+        required
+        autocomplete="off"
+      />
+      <button
+        type="submit"
+        class="w-full sm:w-auto bg-[#fab338] hover:bg-[#e09e2d] text-gray-900 font-semibold text-sm px-6 py-2.5 rounded-xl transition duration-200 whitespace-nowrap shadow shrink-0"
+      >
+        Săn giá ngay
+      </button>
+    </div>
+    <div><p class="<%=error?"text-red-400 text-center mb-5":"hidden"%>"><%=error%></p></div>
+    <div>
+      <p class="text-[#D4AF37] text-center mb-3">Các sàn chúng tôi hỗ trợ:</p>
+      <img src="/assets/logo tiki.jpg" alt="" class="h-20 mx-auto" />
+    </div>
+  </form>
+</div>

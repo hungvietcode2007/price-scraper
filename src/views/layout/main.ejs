@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cú đêm - Theo dõi giá tự động</title>
+    <link rel="stylesheet" href="/css/output.css" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicon_io/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/assets/favicon_io/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="font-['Inter']">
+    <%-include("../component/navbar")%>
+    <main>
+      <div
+        class="relative min-h-screen bg-[#0B0F19] flex items-center justify-center"
+      >
+        <div
+          class="absolute flex justify-center items-center inset-0 bg-[url('/assets/logo.png')] bg-cover bg-center bg-no-repeat opacity-[0.1] pointer-events-none"
+        ></div>
+        <%-body%>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/client.js"></script>
+  </body>
+</html>

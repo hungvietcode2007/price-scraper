@@ -1,0 +1,130 @@
+<div class="w-[90%] mx-auto flex flex-col mt-30">
+  <div class="flex flex-col md:flex-row gap-5">
+    <div
+      class="w-full md:w-[65%] bg-black/30 border border-gray-800/80 rounded-2xl p-3 shadow-xl flex flex-col md:flex-row items-stretch"
+    >
+      <div class="shrink-0 mx-auto">
+        <img
+          src="<%=product.image_url%>"
+          alt="ảnh sản phẩm"
+          class="h-full w-50 rounded-2xl mr-5 object-cover"
+        />
+      </div>
+      <div class="flex flex-col">
+        <p class="text-white font-bold text-2xl line-clamp-2">
+          <%=product.name%>
+        </p>
+        <span
+          class="<%= product.platform === 'tiki' ? 'bg-blue-500/25 border border-blue-500/30 text-blue-400' : '' %> self-start w-fit px-2.5 py-0.5 rounded-2xl text-sm font-bold uppercase my-3"
+        >
+          <%= product.platform %>
+        </span>
+        <span class="text-[#D4AF37] font-bold text-3xl">
+          <%=product.current_price%>đ
+        </span>
+        <a
+          href="<%= product.url %>"
+          target="_blank"
+          class="my-3 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm transition-colors shadow-lg shadow-blue-600/20 w-fit"
+        >
+          <span>Tới nơi bán</span>
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M14 5l7 7m0 0l-7 7m7-7H3"
+            ></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div
+      id="formDiv"
+      class="w-full md:w-[35%] bg-black/30 shadow-xl rounded-2xl border border-[#D4AF37]"
+    >
+      <form action="/userProcess" method="post" class="flex flex-col gap-3 p-3">
+        <p
+          id="formTitle"
+          class="text-[#D4AF37] text-center uppercase text-2xl font-semibold rounded-2xl"
+        >
+          canh giá tự động
+        </p>
+        <div class="flex flex-col gap-3" id="inputForm">
+          <div class="mx-auto w-[85%]">
+            <input
+              type="number"
+              name="product_id"
+              value="<%=product.id%>"
+              class="hidden"
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Nhập email của bạn"
+              required
+              class="w-full px-4 py-3 rounded-xl bg-[#0B0F19] border border-slate-700/60 text-slate-100 placeholder-slate-400 text-sm focus:outline-none focus:border-[#D4AF37]"
+            />
+          </div>
+          <div class="mx-auto w-[85%]">
+            <input
+              type="number"
+              name="target_price"
+              placeholder="Nhập mức giá mong muốn (VND)"
+              required
+              min="0"
+              class="w-full px-4 py-3 rounded-xl bg-[#0B0F19] border border-slate-700/60 text-slate-100 placeholder-slate-400 text-sm focus:outline-none focus:border-[#D4AF37]"
+            />
+          </div>
+        </div>
+        <div id="imageConfirm" class="hidden shrink-0">
+          <img
+            src="/assets/thumb-up.png"
+            alt="confirm"
+            class="mx-auto h-full w-50"
+          />
+        </div>
+        <button
+          id="submitBtn"
+          type="submit"
+          class="w-[85%] mx-auto py-3 px-4 rounded-xl bg-[#D4AF37] hover:bg-amber-400 active:scale-[0.98] text-slate-950 font-bold text-sm uppercase tracking-wider transition-all duration-150 shadow-md shadow-amber-500/20"
+        >
+          Nhận Thông Báo
+        </button>
+      </form>
+    </div>
+  </div>
+  <div
+    class="w-full bg-[#0d1117] border border-slate-800/80 rounded-2xl p-6 shadow-2xl my-6 text-slate-200"
+  >
+    <div class="mb-4">
+      <h3 class="font-bold text-2xl text-white">Lịch sử biến động giá</h3>
+      <div class="flex flex-col md:flex-row mt-1">
+        <p class="text-sm text-slate-400">
+          Thấp nhất:
+          <span class="text-amber-400 font-medium">
+            <%= minPrice.toLocaleString('vi-VN') %>đ
+          </span>
+        </p>
+        <p class="text-sm text-slate-400 ">
+          Cao nhất:
+          <span class="text-amber-400 font-medium">
+            <%= maxPrice.toLocaleString('vi-VN') %>đ
+          </span>
+        </p>
+      </p>
+    </div>
+    <div class="relative w-full h-65">
+      <canvas
+        id="priceHistoryChart"
+        data-labels="<%= encodeURIComponent(JSON.stringify(labels)) %>"
+        data-prices="<%= encodeURIComponent(JSON.stringify(prices)) %>"
+      ></canvas>
+    </div>
+  </div>
+</div>
