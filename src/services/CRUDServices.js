@@ -1,4 +1,3 @@
-const { use } = require("react");
 const connection = require("../config/database");
 const addProductInfo = async (values, singleConnection = connection) => {
   try {
